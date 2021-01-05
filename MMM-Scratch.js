@@ -1,9 +1,10 @@
+`use strict`;
 /* global Module */
 
 /* Magic Mirror
  * Module: MMM-Scratch
  *
- * By 
+ * By kiryanchi
  * MIT Licensed.
  */
 
@@ -16,6 +17,7 @@ Module.register("MMM-Scratch", {
 	requiresVersion: "2.1.0", // Required version of MagicMirror
 
 	start: function() {
+		Log.info(`Starting module: ` + this.name);
 		var self = this;
 		var dataRequest = null;
 		var dataNotification = null;
