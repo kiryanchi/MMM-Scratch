@@ -2,7 +2,7 @@
 
 This is a module for the [MagicMirror²](https://github.com/MichMich/MagicMirror/).
 
-Todo: Insert description here!
+Show scratch in MagicMirror
 
 ## Using the module
 
@@ -13,7 +13,7 @@ var config = {
         {
             module: 'MMM-Scratch',
             config: {
-                // See below for configurable options
+                project: 'URL',
             }
         }
     ]
