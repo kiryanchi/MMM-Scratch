@@ -1,35 +1,42 @@
-`use strict`;
 /* global Module */
 
 /* Magic Mirror
- * Module: MMM-Scratch
- *
- * By kiryanchi
- * MIT Licensed.
- */
+* Module: MMM-Scratch
+*
+* By kiryanchi
+* MIT Licensed.
+*/
+`use strict`;
 
 Module.register("MMM-Scratch", {
 	defaults: {
+		project: 'https://scratch.mit.edu/projects/470052173',
 		updateInterval: 60000,
 		retryDelay: 5000
 	},
 
 	requiresVersion: "2.1.0", // Required version of MagicMirror
 
+	getEmbed: function() {
+		const projectUrl = this.config.project;
+
+		return projectUrl + '/embed';
+	},
+
 	start: function() {
 		Log.info(`Starting module: ` + this.name);
-		var self = this;
-		var dataRequest = null;
-		var dataNotification = null;
+		// var self = this;
+		// var dataRequest = null;
+		// var dataNotification = null;
 
-		//Flag for check if module is loaded
-		this.loaded = false;
+		// //Flag for check if module is loaded
+		// this.loaded = false;
 
-		// Schedule update timer.
-		this.getData();
-		setInterval(function() {
-			self.updateDom();
-		}, this.config.updateInterval);
+		// // Schedule update timer.
+		// this.getData();
+		// setInterval(function() {
+		// 	self.updateDom();
+		// }, this.config.updateInterval);
 	},
 
 	/*
