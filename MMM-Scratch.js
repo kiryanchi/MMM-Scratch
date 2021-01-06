@@ -19,33 +19,22 @@ Module.register("MMM-Scratch", {
 
 	start: function() {
 		Log.info(`Starting module: ` + this.name);
-
-		const projectEmbed = getEmbed();
-
-
-		// var self = this;
-		// var dataRequest = null;
-		// var dataNotification = null;
-
-		// //Flag for check if module is loaded
-		// this.loaded = false;
-
-		// // Schedule update timer.
-		// this.getData();
-		// setInterval(function() {
-		// 	self.updateDom();
-		// }, this.config.updateInterval);
+		// this.drawScratch(projectEmbedUrl);
 	},
 
-	getEmbed: function() {
-		const projectUrl = this.config.project;
+	// drawScratch: function(projectEmbedUrl) {
+	// 	const projectEmbedUrl = this.getEmbed(this.config.project);
 
-		return projectUrl + '/embed';
+		
+	// },
+
+	getEmbed: function(projectNumber) {
+		let projectEmbedUrl = 'https://scratch.mit.edu/projects/embed/';
+		projectEmbedUrl += projectNumber + '/?autostart=true';
+
+		return projectEmbedUrl;
 	},
 
-
-	
-	
 	/* scheduleUpdate()
 	* Schedule next update.
 	*
@@ -65,35 +54,19 @@ Module.register("MMM-Scratch", {
 	},
 	
 	getDom: function() {
-		var self = this;
+		const projectEmbedUrl = this.getEmbed(this.config.project);
 		
 		// create element wrapper for show into the module
 		const wrapper = document.createElement("div");
 		wrapper.className = 'scratch';
-	// If this.dataRequest is not empty
-		if (this.dataRequest) {
-			var wrapperDataRequest = document.createElement("div");
-			// check format https://jsonplaceholder.typicode.com/posts/1
-			wrapperDataRequest.innerHTML = this.dataRequest.title;
-			
-			var labelDataRequest = document.createElement("label");
-			// Use translate function
-			//             this id defined in translations files
-			labelDataRequest.innerHTML = this.translate("TITLE");
-			
-			
-			wrapper.appendChild(labelDataRequest);
-			wrapper.appendChild(wrapperDataRequest);
-		}
 		
-		// Data from helper
-		if (this.dataNotification) {
-			var wrapperDataNotification = document.createElement("div");
-			// translations  + datanotification
-			wrapperDataNotification.innerHTML =  this.translate("UPDATE") + ": " + this.dataNotification.date;
-
-			wrapper.appendChild(wrapperDataNotification);
-		}
+		const scratchElement = document.createElement("iframe");
+		scratchElement.src = projectEmbedUrl;
+		scratchElement.muted = true;
+		// scratchElement.volume = 0;
+		scratchElement.allowFullscreen = true;
+		
+		wrapper.appendChild(scratchElement);
 		return wrapper;
 	},
 	
