@@ -61,8 +61,8 @@ Module.register("MMM-Scratch", {
 		wrapper.className = 'scratch';
 		
 		const scratchElement = document.createElement("iframe");
-		scratchElement.src = projectEmbedUrl;
 		scratchElement.muted = true;
+		scratchElement.src = projectEmbedUrl;
 		// scratchElement.volume = 0;
 		scratchElement.allowFullscreen = true;
 		
