@@ -58,6 +58,10 @@ Module.register("MMM-Scratch", {
 		
 		// create element wrapper for show into the module
 		const wrapper = document.createElement("div");
+		// const scratchWrapper = documenet.createElement('div');
+		// scratchWrapper.className = 'scratchWrapper';
+
+		// wrapper.appendChild(scratchWrapper);
 		wrapper.className = 'scratch';
 		
 		const scratchElement = document.createElement("iframe");
@@ -65,8 +69,15 @@ Module.register("MMM-Scratch", {
 		scratchElement.muted = true;
 		// scratchElement.volume = 0;
 		scratchElement.allowFullscreen = true;
-		
+		scratchElement.allowtransparency = false;
+		scratchElement.height = "100%";
+		scratchElement.width = '100%';
+		scratchElement.bgcolor = "#220000";
+
 		wrapper.appendChild(scratchElement);
+
+
+		// Log.info(scratchApp);
 		return wrapper;
 	},
 	
